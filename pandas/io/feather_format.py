@@ -35,9 +35,9 @@ def to_feather(df: DataFrame, path):
 
     if not isinstance(df.index, Int64Index):
         raise ValueError(
-            "feather does not support serializing {} "
+            f"feather does not support serializing {type(df.index)} "
             "for the index; you can .reset_index() "
-            "to make the index into column(s)".format(type(df.index))
+            "to make the index into column(s)"
         )
 
     if not df.index.equals(RangeIndex.from_range(range(len(df)))):
